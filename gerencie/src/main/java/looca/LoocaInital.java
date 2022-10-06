@@ -19,42 +19,58 @@ public class LoocaInital {
 
     Looca looca = new Looca();
 
-    //sistema
-    Sistema sistema = looca.getSistema();
-
     public void pegarDados() {
         dadosSistema();
         dadosMemoria();
         dadosProcessador();
-        dadosTemperatura();
     }
 
+    public void loopPegarDados() {
+        loopDadosSistema();
+        loopDadosMemoria();
+        loopDadosProcessador();
+        loopDadosTemperatura();
+        
+    }
+
+    //sistema
+    Sistema sistema = looca.getSistema();
+    Sistema loopSistema = looca.getSistema();
+
     void dadosSistema() {
-        sistema.getPermissao();
+        sistema.getSistemaOperacional();
         sistema.getFabricante();
         sistema.getArquitetura();
-        sistema.getInicializado();
-        sistema.getSistemaOperacional();
+        sistema.getPermissao();
 
-        System.out.println("Sistema: ");
         System.out.println(sistema);
+    }
+
+    void loopDadosSistema() {
+        loopSistema.getInicializado();
+        System.out.println(loopSistema);
     }
 
     //memoria
     Memoria memoria = looca.getMemoria();
+    Memoria loopMemoria = looca.getMemoria();
 
     void dadosMemoria() {
-
-        memoria.getDisponivel();
         memoria.getTotal();
-        memoria.getEmUso();
 
-        System.out.println("Memoria: ");
         System.out.println(memoria);
+    }
+
+    void loopDadosMemoria() {
+        loopMemoria.getEmUso();
+        loopMemoria.getDisponivel();
+
+        System.out.println(loopMemoria);
     }
 
     //Processador
     Processador processador = looca.getProcessador();
+    Processador loopProcessador = looca.getProcessador();
 
     void dadosProcessador() {
         processador.getFabricante();
@@ -66,19 +82,21 @@ public class LoocaInital {
         processador.getNumeroPacotesFisicos();
         processador.getNumeroCpusFisicas();
         processador.getNumeroCpusLogicas();
-        processador.getUso();
 
-        System.out.println("Processador: ");
         System.out.println(processador);
     }
 
+    void loopDadosProcessador() {
+        loopProcessador.getUso();
+        System.out.println(loopProcessador);
+    }
+
     //Temperatura
-    Temperatura temperatura = looca.getTemperatura();
+    Temperatura loopTemperatura = looca.getTemperatura();
 
-    void dadosTemperatura() {
-        temperatura.getTemperatura();
+    void loopDadosTemperatura() {
+        loopTemperatura.getTemperatura();
 
-        System.out.println("Temperatura: ");
-        System.out.println(temperatura);
+        System.out.println(loopTemperatura);
     }
 }

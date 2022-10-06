@@ -4,6 +4,7 @@
  */
 package aplication;
 
+import java.util.concurrent.TimeUnit;
 import swing.LoginJava;
 import looca.LoocaInital;
 
@@ -14,16 +15,14 @@ import looca.LoocaInital;
 public class App {
 
     public static void main(String[] args) {
-        
 
         //java swing
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LoginJava().setVisible(true);
-            }
-        });
+          public void run() {
+            new LoginJava().setVisible(true);
+        }
+        });       
+       
 
-        LoocaInital lc = new LoocaInital();
-        lc.pegarDados();
     }
 }
