@@ -4,9 +4,7 @@
  */
 package aplication;
 
-import java.util.concurrent.TimeUnit;
-import swing.LoginJava;
-import looca.LoocaInital;
+import swing.TelaLogin;
 
 /**
  *
@@ -19,7 +17,7 @@ public class App {
         //java swing
         java.awt.EventQueue.invokeLater(new Runnable() {
           public void run() {
-            new LoginJava().setVisible(true);
+            new TelaLogin().setVisible(true);
         }
         });       
        
