@@ -41,7 +41,7 @@ public class CriacaoBanco {
                 + "fkFuncionario INT,"
                 + "FOREIGN KEY (fkFuncionario) REFERENCES usuario(idUsuario),"
                 + "fkEmpresa INT,"
-                + "FOREIGN KEY (fkEmpresa) REFERENCES usuario(idUsuario)"
+                + "FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)"
                 + ");"
         );
 
@@ -60,7 +60,7 @@ public class CriacaoBanco {
 
         con.execute(
                 "create table totem("
-                + "idTotem int primary key auto_increment,"
+                + "idTotem varchar(25) primary key auto_increment,"
                 + "capacidadeDisco double,"
                 + "usoDoDisco double,"
                 + "memoriaRAMTotal double,"
@@ -68,9 +68,9 @@ public class CriacaoBanco {
                 + "threadsTotal int,"
                 + "nucleosTotal double,"
                 + "fkEmpresa INT,"
-                + "FOREIGN KEY (fkEmpresa) REFERENCES totem(idTotem),"
+                + "FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),"
                 + "fkFastFood INT,"
-                + "FOREIGN KEY (fkFastFood) REFERENCES totem(idTotem)"
+                + "FOREIGN KEY (fkFastFood) REFERENCES fastFood(idfastFood)"
                 + ");"
         );
 
@@ -82,7 +82,7 @@ public class CriacaoBanco {
                 + "emUsoRAM  double,"
                 + "disponivelRAM double,"
                 + "fkTotem INT,"
-                + "FOREIGN KEY (fkTotem) REFERENCES metrica(idMetrica)"
+                + "FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)"
                 + ");"
         );
 

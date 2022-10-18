@@ -16,13 +16,31 @@ import com.github.britooo.looca.api.group.temperatura.Temperatura;
  * @author aluno
  */
 public class LoocaInital {
-    // https://github.com/Britooo/looca-api/blob/main/README.md
 
+    Double processosCPU; 
+    Double emUsoRAM;//
+    Double disponivelRAM;//
+    String fkTotem;
+    Double capacidadeDisco;
+    Double usoDoDisco;
+    Double memoriaRAMTotal;
+    Double memoriaDiscoTotal;
+    Integer threadsTotal;
+    Double nucleosTotal;
+
+    // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();
 
     //sistema
     Sistema sistema = looca.getSistema();
     Sistema loopSistema = looca.getSistema();
+    Memoria memoria = looca.getMemoria();
+    Memoria loopMemoria = looca.getMemoria();
+    Processador processador = looca.getProcessador();
+    Processador loopProcessador = looca.getProcessador();
+    Temperatura loopTemperatura = looca.getTemperatura();
+
+    Insercao insert = new Insercao();
 
     void dadosSistema() {
         sistema.getSistemaOperacional();
@@ -39,9 +57,6 @@ public class LoocaInital {
     }
 
     //memoria
-    Memoria memoria = looca.getMemoria();
-    Memoria loopMemoria = looca.getMemoria();
-
     void dadosMemoria() {
         memoria.getTotal();
 
@@ -49,20 +64,17 @@ public class LoocaInital {
     }
 
     void loopDadosMemoria() {
-        loopMemoria.getEmUso();
-        loopMemoria.getDisponivel();
+        emUsoRAM = Double.longBitsToDouble(loopMemoria.getEmUso());
+        disponivelRAM = Double.longBitsToDouble(loopMemoria.getDisponivel());
 
         System.out.println(loopMemoria);
     }
 
     //Processador
-    Processador processador = looca.getProcessador();
-    Processador loopProcessador = looca.getProcessador();
-
     void dadosProcessador() {
         processador.getFabricante();
         processador.getNome();
-        processador.getId();
+        fkTotem = processador.getId();
         processador.getIdentificador();
         processador.getMicroarquitetura();
         processador.getFrequencia();
@@ -79,8 +91,6 @@ public class LoocaInital {
     }
 
     //Temperatura
-    Temperatura loopTemperatura = looca.getTemperatura();
-
     void loopDadosTemperatura() {
         loopTemperatura.getTemperatura();
 
@@ -91,6 +101,8 @@ public class LoocaInital {
         dadosSistema();
         dadosMemoria();
         dadosProcessador();
+
+        insert.alterarTotem(capacidadeDisco, usoDoDisco, memoriaRAMTotal, memoriaDiscoTotal, threadsTotal, nucleosTotal);
     }
 
     public void loopPegarDados() {
@@ -99,12 +111,7 @@ public class LoocaInital {
         loopDadosProcessador();
         loopDadosTemperatura();
 
-    }
-    
-    Insercao insert = new Insercao();
-    
-    public void inserindoDados(Double processosCPU, Double emUsoRAM, Double disponivelRAM, Integer fkTotem, Double capacidadeDisco, Double usoDoDisco, Double memoriaRAMTotal, Double memoriaDiscoTotal, Integer threadsTotal, Double nucleosTotal){
         insert.inserirMetrica(processosCPU, emUsoRAM, disponivelRAM, fkTotem);
-        insert.alterarTotem(capacidadeDisco, usoDoDisco, memoriaRAMTotal, memoriaDiscoTotal, threadsTotal, nucleosTotal);
+
     }
 }
