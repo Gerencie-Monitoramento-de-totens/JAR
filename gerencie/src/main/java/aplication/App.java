@@ -4,6 +4,8 @@
  */
 package aplication;
 
+import banco.CriacaoBanco;
+import banco.Insercao;
 import swing.TelaLogin;
 
 /**
@@ -19,7 +21,11 @@ public class App {
           public void run() {
             new TelaLogin().setVisible(true);
         }
-        });       
+        });
+        
+        CriacaoBanco banc = new CriacaoBanco();
+        
+        banc.criarBanco();
        
 
     }
