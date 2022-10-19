@@ -25,14 +25,14 @@ public class Insercao {
     public void alterarTotem( Double memoriaRAMTotal, Double memoriaDiscoTotal, String IdTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
-        con.update("INSERT INTO empresa (idEmpresa) VALUES ( ?);",
+        con.update("INSERT INTO empresa (idEmpresa) VALUES (?);",
                 1);
         
         con.update("INSERT INTO fastfood (idFastFood) VALUES ( ?);",
                 1);
         
         con.update("INSERT INTO totem (idTotem,fkEmpresa, fkFastFood) VALUES (?, ?, ?);",
-                 null ,1, 1);
+                 1 ,1,1);
         
         con.update("UPDATE totem set memoriaDiscoTotal = ?, memoriaRAMTotal = ? WHERE idTotem = ?;"
             ,  memoriaRAMTotal, memoriaDiscoTotal, 1);

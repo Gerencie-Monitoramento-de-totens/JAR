@@ -18,7 +18,7 @@ public class CriacaoBanco {
     public void criarBanco() {
 
         con.execute(
-                "create table empresa("
+                "create table if not exists empresa("
                 + "idEmpresa int primary key auto_increment,"
                 + "nomeEmpresa varchar(35),"
                 + "telefone char(15),"
@@ -28,7 +28,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table usuario("
+                "create table if not exists  usuario("
                 + "idUsuario int primary key auto_increment,"
                 + "nomeCompleto varchar(60),"
                 + "nomeUser varchar(25),"
@@ -46,7 +46,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table fastfood("
+                "create table if not exists  fastfood("
                 + "idFastFood int primary key auto_increment,"
                 + "nomeFastFood varchar(35),"
                 + "logradouro varchar(60),"
@@ -59,7 +59,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table totem("
+                "create table if not exists  totem("
                 + "idTotem int primary key auto_increment,"
                 + "memoriaRAMTotal double,"
                 + "memoriaDiscoTotal double,"
@@ -71,7 +71,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table metrica("
+                "create table if not exists  metrica("
                 + "idMetrica int primary key auto_increment,"
                 + "tempoDeAtividade timestamp,"
                 + "usoDoDisco double,"

@@ -5,7 +5,7 @@
 package aplication;
 
 import banco.CriacaoBanco;
-import swing.TelaLogin;
+import swing.TelaLoginn;
 
 /**
  *
@@ -15,13 +15,8 @@ public class App {
 
     public static void main(String[] args) {
 
-        //java swing
-        java.awt.EventQueue.invokeLater(new Runnable() {
-          public void run() {
-            new TelaLogin().setVisible(true);
-        }
-        });
-        
+        TelaLoginn log = new TelaLoginn();
+        log.show();
         CriacaoBanco banc = new CriacaoBanco();
         
         banc.criarBanco();

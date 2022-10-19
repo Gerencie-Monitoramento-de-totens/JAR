@@ -27,6 +27,36 @@ public class LoocaInital {
     Double usoDoDisco;//
     Double memoriaRAMTotal;//
     Double memoriaDiscoTotal;//
+    
+    public Double getMemoriaRAMTotal() {
+        return memoriaRAMTotal;
+    }
+
+    public String getIdTotem() {
+        return idTotem;
+    }
+
+    public Double getUsoCPU() {
+        return usoCPU;
+    }
+
+    public Double getEmUsoRAM() {
+        return emUsoRAM;
+    }
+
+    public Double getDisponivelRAM() {
+        return disponivelRAM;
+    }
+
+    public Double getUsoDoDisco() {
+        return usoDoDisco;
+    }
+
+    public Double getMemoriaDiscoTotal() {
+        return memoriaDiscoTotal;
+    }
+    
+    
 
     // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();
