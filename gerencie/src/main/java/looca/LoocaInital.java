@@ -6,10 +6,13 @@ package looca;
 
 import banco.Insercao;
 import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.discos.DiscoGrupo;
+import com.github.britooo.looca.api.group.discos.Disco;
 import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
+import java.util.List;
 
 /**
  *
@@ -17,16 +20,13 @@ import com.github.britooo.looca.api.group.temperatura.Temperatura;
  */
 public class LoocaInital {
 
-    Double processosCPU; 
+    Double usoCPU;
     Double emUsoRAM;//
     Double disponivelRAM;//
-    String fkTotem;
-    Double capacidadeDisco;
-    Double usoDoDisco;
-    Double memoriaRAMTotal;
-    Double memoriaDiscoTotal;
-    Integer threadsTotal;
-    Double nucleosTotal;
+    String idTotem;//
+    Double usoDoDisco;//
+    Double memoriaRAMTotal;//
+    Double memoriaDiscoTotal;//
 
     // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();
@@ -44,9 +44,9 @@ public class LoocaInital {
 
     void dadosSistema() {
         sistema.getSistemaOperacional();
-        sistema.getFabricante();
-        sistema.getArquitetura();
-        sistema.getPermissao();
+        //sistema.getFabricante();
+        //sistema.getArquitetura();
+        //sistema.getPermissao();
 
         System.out.println(sistema);
     }
@@ -58,7 +58,7 @@ public class LoocaInital {
 
     //memoria
     void dadosMemoria() {
-        memoria.getTotal();
+        memoriaRAMTotal = Double.longBitsToDouble(memoria.getTotal());
 
         System.out.println(memoria);
     }
@@ -72,15 +72,15 @@ public class LoocaInital {
 
     //Processador
     void dadosProcessador() {
-        processador.getFabricante();
-        processador.getNome();
-        fkTotem = processador.getId();
-        processador.getIdentificador();
-        processador.getMicroarquitetura();
-        processador.getFrequencia();
-        processador.getNumeroPacotesFisicos();
-        processador.getNumeroCpusFisicas();
-        processador.getNumeroCpusLogicas();
+        //processador.getFabricante();
+        //processador.getNome();
+        idTotem = processador.getId();
+        //processador.getIdentificador();
+        //processador.getMicroarquitetura();
+        //processador.getFrequencia();
+        //processador.getNumeroPacotesFisicos();
+        //processador.getNumeroCpusFisicas();
+        //processador.getNumeroCpusLogicas();
 
         System.out.println(processador);
     }
@@ -97,12 +97,27 @@ public class LoocaInital {
         System.out.println(loopTemperatura);
     }
 
+    //grupo de disco
+    void grupoDeDisco() {
+
+        DiscoGrupo grupoDeDiscos = looca.getGrupoDeDiscos();
+
+//Obtendo lista de discos a partir do getter
+        List<Disco> discos = grupoDeDiscos.getDiscos();
+
+        for(int i = 0; i < discos.size(); i ++ ) {
+            memoriaDiscoTotal = Double.longBitsToDouble(discos.get(i).getTamanho());
+            usoDoDisco = Double.longBitsToDouble(discos.get(i).getLeituras());
+        }
+    }
+
     public void pegarDados() {
         dadosSistema();
         dadosMemoria();
         dadosProcessador();
+        grupoDeDisco();
 
-        insert.alterarTotem(capacidadeDisco, usoDoDisco, memoriaRAMTotal, memoriaDiscoTotal, threadsTotal, nucleosTotal);
+        insert.alterarTotem( memoriaRAMTotal, memoriaDiscoTotal, idTotem);
     }
 
     public void loopPegarDados() {
@@ -111,7 +126,7 @@ public class LoocaInital {
         loopDadosProcessador();
         loopDadosTemperatura();
 
-        insert.inserirMetrica(processosCPU, emUsoRAM, disponivelRAM, fkTotem);
+        insert.inserirMetrica(usoCPU, usoDoDisco, emUsoRAM, disponivelRAM, idTotem);
 
     }
 }

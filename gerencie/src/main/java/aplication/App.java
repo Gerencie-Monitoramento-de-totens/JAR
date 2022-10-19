@@ -5,7 +5,6 @@
 package aplication;
 
 import banco.CriacaoBanco;
-import banco.Insercao;
 import swing.TelaLogin;
 
 /**
