@@ -203,10 +203,10 @@ public class MostrarDado extends javax.swing.JFrame {
                 lc.loopPegarDados();
                 coletaCPU.setText(Conversor.formatarBytes(lc.getUsoCPU().longValue()));
                 usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
-                totalRAM.setText(String.valueOf(lc.getMemoriaRAMTotal()));
+                totalRAM.setText(Conversor.formatarBytes(lc.getMemoriaRAMTotal()));
                 disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
                 coletaDisco.setText(Conversor.formatarBytes(lc.getUsoDoDisco()));
-                totalDisco.setText(String.valueOf(lc.getMemoriaDiscoTotal()));
+                totalDisco.setText(Conversor.formatarBytes(lc.getMemoriaDiscoTotal()));
             }
         },0,1000);
         

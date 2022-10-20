@@ -61,7 +61,7 @@ public class CriacaoBanco {
         con.execute(
                 "create table if not exists  totem("
                 + "idTotem int primary key auto_increment,"
-                + "memoriaRAMTotal double,"
+                + "memoriaRAMTotal longvarchar,"
                 + "memoriaDiscoTotal double,"
                 + "fkEmpresa INT,"
                 + "FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),"

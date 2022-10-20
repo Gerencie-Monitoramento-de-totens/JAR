@@ -22,7 +22,7 @@ public class Insercao {
                  usoCPU,usoDoDisco, emUsoRAM, disponivelRAM, 1);
     }
 
-    public void alterarTotem( Double memoriaRAMTotal, Double memoriaDiscoTotal, String IdTotem) {
+    public void alterarTotem( Long memoriaRAMTotal, Long memoriaDiscoTotal, String IdTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
         con.update("INSERT INTO empresa (idEmpresa) VALUES (?);",

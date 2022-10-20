@@ -25,10 +25,10 @@ public class LoocaInital {
     Long disponivelRAM = 00000000000L;//
     String idTotem = "";//
     Long usoDoDisco = 00000000000L;//
-    Double memoriaRAMTotal = 0.0;//
-    Double memoriaDiscoTotal = 0.0;//
-    
-    public Double getMemoriaRAMTotal() {
+    Long memoriaRAMTotal = 0000000000L;//
+    Long memoriaDiscoTotal = 0000000000L;//
+
+    public Long getMemoriaRAMTotal() {
         return memoriaRAMTotal;
     }
 
@@ -52,11 +52,9 @@ public class LoocaInital {
         return usoDoDisco;
     }
 
-    public Double getMemoriaDiscoTotal() {
+    public Long getMemoriaDiscoTotal() {
         return memoriaDiscoTotal;
     }
-    
-    
 
     // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();
@@ -88,7 +86,7 @@ public class LoocaInital {
 
     //memoria
     void dadosMemoria() {
-        memoriaRAMTotal = Double.longBitsToDouble(memoria.getTotal());
+        memoriaRAMTotal = (memoria.getTotal());
 
         System.out.println(memoria);
     }
@@ -118,14 +116,13 @@ public class LoocaInital {
     }
 
     void loopDadosProcessador() {
-        
-        usoCPU = 
-        loopProcessador.getUso();
-        
+
+        usoCPU
+                = loopProcessador.getUso();
+
         System.out.println(loopProcessador);
-        
-                emUsoRAM = loopMemoria.getEmUso();
-        System.out.println(emUsoRAM);
+
+        emUsoRAM = loopMemoria.getEmUso();
         disponivelRAM = (loopMemoria.getDisponivel());
 
         System.out.println(loopMemoria);
@@ -146,8 +143,8 @@ public class LoocaInital {
 //Obtendo lista de discos a partir do getter
         List<Disco> discos = grupoDeDiscos.getDiscos();
 
-        for(int i = 0; i < discos.size(); i ++ ) {
-            memoriaDiscoTotal = Double.longBitsToDouble(discos.get(i).getTamanho());
+        for (int i = 0; i < discos.size(); i++) {
+            memoriaDiscoTotal = (discos.get(i).getTamanho());
             usoDoDisco = (discos.get(i).getLeituras());
         }
     }
@@ -158,7 +155,7 @@ public class LoocaInital {
         dadosProcessador();
         grupoDeDisco();
 
-        insert.alterarTotem( memoriaRAMTotal, memoriaDiscoTotal, idTotem);
+        insert.alterarTotem(memoriaRAMTotal, memoriaDiscoTotal, idTotem);
     }
 
     public void loopPegarDados() {
