@@ -15,7 +15,7 @@ public class Insercao {
     Connection connection = new Connection();
     JdbcTemplate con = connection.getConnection();
 
-    public void inserirMetrica(Double usoCPU,Double usoDoDisco, Double emUsoRAM, Double disponivelRAM, String fkTotem) {
+    public void inserirMetrica(Double usoCPU,Long usoDoDisco, Long emUsoRAM, Long disponivelRAM, String fkTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
         con.update("INSERT INTO metrica (usoCPU,usoDoDisco, emUsoRAM, disponivelRAM, fkTotem) VALUES (?, ?, ?, ?, ?);",

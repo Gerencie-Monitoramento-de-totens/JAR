@@ -4,6 +4,7 @@
  */
 package swing;
 
+import com.github.britooo.looca.api.util.Conversor;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
@@ -167,9 +168,9 @@ public class MostrarDado extends javax.swing.JFrame {
                     .addComponent(jLabel6)
                     .addComponent(totalRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(totalDisco))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(totalDisco)
+                    .addComponent(jLabel7))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -200,14 +201,14 @@ public class MostrarDado extends javax.swing.JFrame {
             @Override
             public void run(){
                 lc.loopPegarDados();
-                coletaCPU.setText(Double.toString(lc.getUsoCPU()));
-                usoRAM.setText(String.valueOf(lc.getEmUsoRAM()));
+                coletaCPU.setText(Conversor.formatarBytes(lc.getUsoCPU().longValue()));
+                usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
                 totalRAM.setText(String.valueOf(lc.getMemoriaRAMTotal()));
-                disponivelRAM.setText(String.valueOf(lc.getDisponivelRAM()));
-                coletaDisco.setText(Double.toString(lc.getUsoDoDisco()));
+                disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
+                coletaDisco.setText(Conversor.formatarBytes(lc.getUsoDoDisco()));
                 totalDisco.setText(String.valueOf(lc.getMemoriaDiscoTotal()));
             }
-        },0,5000);
+        },0,1000);
         
      
         

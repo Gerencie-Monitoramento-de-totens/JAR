@@ -21,10 +21,10 @@ import java.util.List;
 public class LoocaInital {
 
     Double usoCPU = 0.0;
-    Double emUsoRAM = 0.0;//
-    Double disponivelRAM = 0.0;//
+    Long emUsoRAM = 00000000000L;//
+    Long disponivelRAM = 00000000000L;//
     String idTotem = "";//
-    Double usoDoDisco = 0.0;//
+    Long usoDoDisco = 00000000000L;//
     Double memoriaRAMTotal = 0.0;//
     Double memoriaDiscoTotal = 0.0;//
     
@@ -40,15 +40,15 @@ public class LoocaInital {
         return usoCPU;
     }
 
-    public Double getEmUsoRAM() {
+    public Long getEmUsoRAM() {
         return emUsoRAM;
     }
 
-    public Double getDisponivelRAM() {
+    public Long getDisponivelRAM() {
         return disponivelRAM;
     }
 
-    public Double getUsoDoDisco() {
+    public Long getUsoDoDisco() {
         return usoDoDisco;
     }
 
@@ -94,8 +94,10 @@ public class LoocaInital {
     }
 
     void loopDadosMemoria() {
-        emUsoRAM = Double.longBitsToDouble(loopMemoria.getEmUso());
-        disponivelRAM = Double.longBitsToDouble(loopMemoria.getDisponivel());
+        emUsoRAM = loopMemoria.getEmUso();
+        System.out.println(emUsoRAM);
+        disponivelRAM = loopMemoria.getDisponivel();
+//        disponivelRAM = Double.longBitsToDouble(loopMemoria.getDisponivel());
 
         System.out.println(loopMemoria);
     }
@@ -116,8 +118,17 @@ public class LoocaInital {
     }
 
     void loopDadosProcessador() {
+        
+        usoCPU = 
         loopProcessador.getUso();
+        
         System.out.println(loopProcessador);
+        
+                emUsoRAM = loopMemoria.getEmUso();
+        System.out.println(emUsoRAM);
+        disponivelRAM = (loopMemoria.getDisponivel());
+
+        System.out.println(loopMemoria);
     }
 
     //Temperatura
@@ -137,7 +148,7 @@ public class LoocaInital {
 
         for(int i = 0; i < discos.size(); i ++ ) {
             memoriaDiscoTotal = Double.longBitsToDouble(discos.get(i).getTamanho());
-            usoDoDisco = Double.longBitsToDouble(discos.get(i).getLeituras());
+            usoDoDisco = (discos.get(i).getLeituras());
         }
     }
 
