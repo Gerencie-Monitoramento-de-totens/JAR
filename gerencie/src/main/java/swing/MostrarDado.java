@@ -4,6 +4,8 @@
  */
 package swing;
 
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
 import looca.LoocaInital;
 
@@ -12,7 +14,9 @@ import looca.LoocaInital;
  * @author Aegis
  */
 public class MostrarDado extends javax.swing.JFrame {
+
     LoocaInital lc = new LoocaInital();
+
     /**
      * Creates new form MostrarDado
      */
@@ -21,8 +25,7 @@ public class MostrarDado extends javax.swing.JFrame {
     }
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt) {
-        coletaCPU.setText("dasdsadas");
-        
+
     }
 
     /**
@@ -73,7 +76,7 @@ public class MostrarDado extends javax.swing.JFrame {
         totalDisco.setText("#####");
 
         jLabel3.setForeground(new java.awt.Color(216, 174, 83));
-        jLabel3.setText("DISCO");
+        jLabel3.setText("DISCO EM USO");
 
         jLabel4.setForeground(new java.awt.Color(216, 174, 83));
         jLabel4.setText("RAM EM USO");
@@ -89,8 +92,6 @@ public class MostrarDado extends javax.swing.JFrame {
 
         coletaCPU.setText("#####");
 
-        button01.setBackground(new java.awt.Color(255, 255, 255));
-        button01.setForeground(new java.awt.Color(0, 0, 0));
         button01.setText("Start");
         button01.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,49 +103,50 @@ public class MostrarDado extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(41, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(coletaCPU))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel7)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalDisco))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel6)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(totalRAM))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel5)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(disponivelRAM))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(usoRAM))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jLabel3)
-                            .addGap(172, 172, 172)
-                            .addComponent(coletaDisco))))
-                .addGap(37, 37, 37))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(button01)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(235, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel6)
+                                    .addGap(235, 235, 235)
+                                    .addComponent(totalRAM))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel2)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(coletaCPU))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel3)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(coletaDisco))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel4)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(usoRAM))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel5)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(disponivelRAM))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel7)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(totalDisco))))
+                        .addGap(124, 124, 124))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(button01)
+                        .addGap(297, 297, 297))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(button01)
-                .addGap(40, 40, 40)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(coletaCPU))
@@ -163,7 +165,7 @@ public class MostrarDado extends javax.swing.JFrame {
                 .addGap(56, 56, 56)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(totalRAM))
+                    .addComponent(totalRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
@@ -175,7 +177,9 @@ public class MostrarDado extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -187,27 +191,29 @@ public class MostrarDado extends javax.swing.JFrame {
 
     private void button01ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button01ActionPerformed
         // TODO add your handling code here:
+
+        lc.pegarDados();
         
+
         
-
-            lc.pegarDados();
-
-            for (int i = 0; i != 1;) {
-
-                try {
-                    TimeUnit.SECONDS.sleep(10);
-                    lc.loopPegarDados();
-
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
+            new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run(){
+                lc.loopPegarDados();
+                coletaCPU.setText(Double.toString(lc.getUsoCPU()));
+                usoRAM.setText(String.valueOf(lc.getEmUsoRAM()));
+                totalRAM.setText(String.valueOf(lc.getMemoriaRAMTotal()));
+                disponivelRAM.setText(String.valueOf(lc.getDisponivelRAM()));
+                coletaDisco.setText(Double.toString(lc.getUsoDoDisco()));
+                totalDisco.setText(String.valueOf(lc.getMemoriaDiscoTotal()));
             }
+        },0,5000);
         
-        coletaCPU.setText(Integer.toString(55));
+     
         
-        
-        
-        
+
+
+
     }//GEN-LAST:event_button01ActionPerformed
 
     /**
@@ -243,6 +249,7 @@ public class MostrarDado extends javax.swing.JFrame {
                 new MostrarDado().setVisible(true);
             }
         });
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

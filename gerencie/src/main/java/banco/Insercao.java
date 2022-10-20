@@ -28,6 +28,7 @@ public class Insercao {
         con.update("INSERT INTO empresa (idEmpresa) VALUES (?);",
                 1);
         
+        
         con.update("INSERT INTO fastfood (idFastFood) VALUES ( ?);",
                 1);
         

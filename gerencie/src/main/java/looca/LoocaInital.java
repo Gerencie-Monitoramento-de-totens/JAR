@@ -20,13 +20,13 @@ import java.util.List;
  */
 public class LoocaInital {
 
-    Double usoCPU;
-    Double emUsoRAM;//
-    Double disponivelRAM;//
-    String idTotem;//
-    Double usoDoDisco;//
-    Double memoriaRAMTotal;//
-    Double memoriaDiscoTotal;//
+    Double usoCPU = 0.0;
+    Double emUsoRAM = 0.0;//
+    Double disponivelRAM = 0.0;//
+    String idTotem = "";//
+    Double usoDoDisco = 0.0;//
+    Double memoriaRAMTotal = 0.0;//
+    Double memoriaDiscoTotal = 0.0;//
     
     public Double getMemoriaRAMTotal() {
         return memoriaRAMTotal;
