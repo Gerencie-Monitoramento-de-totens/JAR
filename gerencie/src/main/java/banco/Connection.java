@@ -19,21 +19,21 @@ public class Connection {
     public Connection() {
         BasicDataSource datasource = new BasicDataSource();
 
-        datasource.setDriverClassName("org.h2.Driver");
+        //datasource.setDriverClassName("org.h2.Driver");
         
-        datasource.setUrl("jdbc:h2:file:./meu_banco");
+        //datasource.setUrl("jdbc:h2:file:./meu_banco");
                
-        datasource.setUsername("sa");
+        //datasource.setUsername("sa");
 
-        datasource.setPassword("");
+        //datasource.setPassword("");
         
-        //this.datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        datasource.setDriverClassName("com.mysql.jdbc.Driver");
         
-        //this.datasource.setUrl("jdbc:mysql://localhost:3360/meu_banco");
+        datasource.setUrl("jdbc:mysql://localhost/gerencie");
         
-        //this.datasource.setUsername("root");
+        datasource.setUsername("root");
         
-        //this.datasource.setPassword("teste");
+        datasource.setPassword("urubu100");
         
         connection = new JdbcTemplate(datasource);
     }
