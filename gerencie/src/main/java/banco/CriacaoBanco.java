@@ -16,9 +16,9 @@ public class CriacaoBanco {
     JdbcTemplate con = connection.getConnection();
 
     public void criarBanco() {
-        con.execute("drop database gerencie");
-        con.execute("create database gerencie");
-        con.execute("use gerencie");
+        //con.execute("drop database gerencie");
+        //con.execute("create database gerencie");
+        //con.execute("use gerencie");
 
         con.execute(
                 "create table if not exists empresa("
