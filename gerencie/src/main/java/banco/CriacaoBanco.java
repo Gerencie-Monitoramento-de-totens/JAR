@@ -16,6 +16,9 @@ public class CriacaoBanco {
     JdbcTemplate con = connection.getConnection();
 
     public void criarBanco() {
+        con.execute("drop database gerencie");
+        con.execute("create database gerencie");
+        con.execute("use gerencie");
 
         con.execute(
                 "create table if not exists empresa("
@@ -46,7 +49,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table if not exists  fastfood("
+                "create table if not exists  fastFood("
                 + "idFastFood int primary key auto_increment,"
                 + "nomeFastFood varchar(35),"
                 + "logradouro varchar(60),"
@@ -54,19 +57,19 @@ public class CriacaoBanco {
                 + "CEP char(9),"
                 + "CNPJ CHAR(18),"
                 + "email varchar(45),"
-                + "telefone char(15)"
+                + "telefone char(15),"
+                + "fkEmpresa INT,"
+                + "FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa)"
                 + ");"
         );
 
         con.execute(
                 "create table if not exists  totem("
                 + "idTotem int primary key auto_increment,"
-                + "memoriaRAMTotal longvarchar,"
+                + "memoriaRAMTotal long,"
                 + "memoriaDiscoTotal double,"
-                + "fkEmpresa INT,"
-                + "FOREIGN KEY (fkEmpresa) REFERENCES empresa(idEmpresa),"
                 + "fkFastFood INT,"
-                + "FOREIGN KEY (fkFastFood) REFERENCES fastFood(idfastFood)"
+                + "FOREIGN KEY (fkFastFood) REFERENCES fastFood(idFastFood)"
                 + ");"
         );
 
@@ -74,10 +77,10 @@ public class CriacaoBanco {
                 "create table if not exists  metrica("
                 + "idMetrica int primary key auto_increment,"
                 + "tempoDeAtividade timestamp,"
-                + "usoDoDisco longvarchar,"
+                + "usoDoDisco long,"
                 + "usoCPU Double,"
-                + "emUsoRAM  longvarchar,"
-                + "disponivelRAM longvarchar,"
+                + "emUsoRAM  long,"
+                + "disponivelRAM long,"
                 + "fkTotem INT,"
                 + "FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)"
                 + ");"

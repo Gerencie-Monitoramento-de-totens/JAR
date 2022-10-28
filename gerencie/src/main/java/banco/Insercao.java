@@ -29,11 +29,11 @@ public class Insercao {
                 1);
         
         
-        con.update("INSERT INTO fastfood (idFastFood) VALUES ( ?);",
-                1);
+        con.update("INSERT INTO fastFood (idFastFood,fkEmpresa) VALUES (?, ?);",
+                1,1);
         
-        con.update("INSERT INTO totem (idTotem,fkEmpresa, fkFastFood) VALUES (?, ?, ?);",
-                 1 ,1,1);
+        con.update("INSERT INTO totem (idTotem, fkFastFood) VALUES (?, ?);",
+                 1,1);
         
         con.update("UPDATE totem set memoriaDiscoTotal = ?, memoriaRAMTotal = ? WHERE idTotem = ?;"
             ,  memoriaRAMTotal, memoriaDiscoTotal, 1);

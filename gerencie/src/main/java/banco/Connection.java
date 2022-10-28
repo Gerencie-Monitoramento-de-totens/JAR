@@ -31,9 +31,9 @@ public class Connection {
         
         datasource.setUrl("jdbc:mysql://localhost/gerencie");
         
-        datasource.setUsername("root");
+        datasource.setUsername("aluno");
         
-        datasource.setPassword("urubu100");
+        datasource.setPassword("sptech");
         
         connection = new JdbcTemplate(datasource);
     }
