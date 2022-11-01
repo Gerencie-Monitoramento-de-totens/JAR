@@ -27,15 +27,15 @@ public class Connection {
 
         //datasource.setPassword("");
         
-        datasource.setDriverClassName("com.mysql.jdbc.Driver");
+        datasource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         
-        datasource.setUrl("jdbc:mysql://localhost/gerencie");
+        datasource.setUrl("jdbc:mysql://localhost:3306/gerencie");
         
         datasource.setUsername("root");
         
         datasource.setPassword("urubu100");
         
-        connection = new JdbcTemplate(datasource);
+        this.connection = new JdbcTemplate(datasource);
     }
 
     public JdbcTemplate getConnection() {
