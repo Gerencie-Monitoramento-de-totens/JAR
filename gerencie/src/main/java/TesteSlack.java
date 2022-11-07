@@ -18,7 +18,7 @@ public class TesteSlack {
        
         JSONObject json = new JSONObject();
         
-        json.put("text", "Suas notificações no Slack deram certo!");
+        json.put("text", "Tudo está indo bem");
         
         Slack.sendMessage(json);
         
