@@ -165,6 +165,31 @@ public class LoocaInital {
         loopDadosTemperatura();
 
         insert.inserirMetrica(usoCPU, usoDoDisco, emUsoRAM, disponivelRAM, idTotem);
-
+        
+        
+        //poderiamos criar dentro do slack select do banco, porem isso consumiria coisas desnecessarias
+        
+        // ***
+        
+        // tambem poderiamos chamar esses metodos de pegar dados no slack, podendo gerar conflitos por não pegar os mesmos dados, supercarregar a api ou inserir dois dados iguais no banco
+        
+        //***
+        
+        // como vamos fazer: 
+        
+        //podemos chamar o slack aqui passando como argumento os mesmos dados que vamos inserir no banco
+        // com isso garantimos que a cada chamada do slack as validações vão ser dos dados atuais
+        
+        // após isso criamos no slack uma função que valida dados por dados para saber se gera ou não o aviso
+        // enviamos o aviso
+        
+        // *** 
+        // pontos a serem lembrados
+        
+        //aonde vamos fazer o select da tabela totem para saber ou não se está em aviso será dentro do slack
+        // é nos slack que vamos faer a alteração do campo do totem de aviso e a hora (ultimo aviso)
+        // fazer validação para saber quando foi o ultimo aviso desse totem e gerar aviso novamente se nescessario
+        
+        
     }
 }

@@ -4,7 +4,6 @@
  */
 package aplication;
 
-import banco.CriacaoBanco;
 import swing.TelaLoginn;
 
 /**
@@ -17,10 +16,5 @@ public class App {
 
         TelaLoginn log = new TelaLoginn();
         log.show();
-        CriacaoBanco banc = new CriacaoBanco();
-        
-        banc.criarBanco();
-       
-
     }
 }

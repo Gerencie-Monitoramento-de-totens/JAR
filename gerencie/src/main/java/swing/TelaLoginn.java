@@ -4,9 +4,9 @@
  */
 package swing;
 
-import java.util.concurrent.TimeUnit;
+import banco.Consultas;
+import banco.CriacaoBanco;
 import javax.swing.JOptionPane;
-import looca.LoocaInital;
 
 /**
  *
@@ -14,8 +14,8 @@ import looca.LoocaInital;
  */
 public class TelaLoginn extends javax.swing.JFrame {
 
+    Consultas consulta = new Consultas();
     
-
     /**
      * Creates new form TelaLoginn
      */
@@ -145,11 +145,15 @@ public class TelaLoginn extends javax.swing.JFrame {
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
+        Consultas consulta = new Consultas();
+        consulta.logarTotem(txtLogin.getText(), textSenha.getText());
+        
         if (txtLogin.getText().equalsIgnoreCase("Admin") && textSenha.getText().equals("1234")) {
             dispose();
+            CriacaoBanco banc = new CriacaoBanco();
+            banc.criarBanco();
             MostrarDado mds = new MostrarDado();
             mds.show();
-            
 
         } else {
 

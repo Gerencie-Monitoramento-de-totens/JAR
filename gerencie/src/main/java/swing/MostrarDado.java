@@ -194,9 +194,7 @@ public class MostrarDado extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         lc.pegarDados();
-        
 
-        
             new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run(){
