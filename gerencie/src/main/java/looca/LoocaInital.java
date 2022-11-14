@@ -180,6 +180,7 @@ public class LoocaInital {
         //podemos chamar o slack aqui passando como argumento os mesmos dados que vamos inserir no banco
         // com isso garantimos que a cada chamada do slack as validações vão ser dos dados atuais
         
+        
         // após isso criamos no slack uma função que valida dados por dados para saber se gera ou não o aviso
         // enviamos o aviso
         
@@ -190,6 +191,12 @@ public class LoocaInital {
         // é nos slack que vamos faer a alteração do campo do totem de aviso e a hora (ultimo aviso)
         // fazer validação para saber quando foi o ultimo aviso desse totem e gerar aviso novamente se nescessario
         
-        
+         //o metodo de preferencia tem q ser void
+        //não se esquecam de chamar dentro do metodo o select
+        // criem um aviso pra cada limite
+        //deixem somente uma classe parara conexao e uma para os avisos
+        //renomeiem o pacote 
+        //renomeiem as classes para melhor manutencao
+        // *** brilhem meninos *** 
     }
 }
