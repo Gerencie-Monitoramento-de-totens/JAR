@@ -4,10 +4,8 @@
  */
 package banco;
 
-import com.github.britooo.looca.api.core.Looca;
-import com.github.britooo.looca.api.group.processador.Processador;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.Map;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 /**
@@ -19,19 +17,16 @@ public class Consultas {
     Connection connection = new Connection();
     JdbcTemplate con = connection.getConnection();
 
-    public ResultSet logarTotem(String usuario,String senha) {
-        Looca looca = new Looca();
-        Processador processador = looca.getProcessador();
-        String id = processador.getId();
-        
-        Statement executor = con.createStatement();
-        String comando = "select * from Totem where idTotem = " + id 
-            + "and usuarioTotem ="+ usuario +" and senhaTotem = " + senha  + ";";
-        
-        
-        
-        ResultSet isAvaible = executor.executeQuery(comando);
-        return isAvaible;
+    public boolean logarTotem(String usuario, String senha) {
+        try {
+            Map<String, Object> registro = con.queryForMap(
+                    "select * from totem where usuarioTotem = ? and senhaTotem = ?;", usuario, senha);
+
+            return registro.size() > 1;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
+
     }
 
 }

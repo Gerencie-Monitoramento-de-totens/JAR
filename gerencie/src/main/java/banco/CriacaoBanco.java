@@ -24,8 +24,8 @@ public class CriacaoBanco {
                 "create table if not exists empresa("
                 + "idEmpresa int primary key auto_increment,"
                 + "nomeEmpresa varchar(45),"
-                + "telefone char15),"
-                + "cepEmpresa char(9)),"
+                + "telefone char(15),"
+                + "cepEmpresa char(9),"
                 + "CNPJ char(18)"
                 + ");"
         );
@@ -77,7 +77,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table comandos("
+                "create table if not exists comandos("
                 + "idComando int primary key auto_increment,"
                 + "dtHora datetime,"
                 + "comandoExecutado varchar(40),"

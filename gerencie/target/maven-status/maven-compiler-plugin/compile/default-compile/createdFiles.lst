@@ -4,6 +4,7 @@ swing\TelaLoginn$1.class
 banco\Insercao.class
 swing\MostrarDado$2.class
 swing\TelaLoginn$2.class
+banco\Consultas.class
 swing\MostrarDado.class
 swing\TelaLoginn$3.class
 swing\MostrarDado$3.class
@@ -12,6 +13,7 @@ looca\LoocaInital.class
 banco\Connection.class
 SlackInt.class
 swing\TelaLoginn$4.class
+entities\Totem.class
 Slack.class
 aplication\App.class
 banco\CriacaoBanco.class

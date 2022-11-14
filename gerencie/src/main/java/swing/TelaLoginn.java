@@ -146,9 +146,9 @@ public class TelaLoginn extends javax.swing.JFrame {
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
         Consultas consulta = new Consultas();
-        consulta.logarTotem(txtLogin.getText(), textSenha.getText());
+        boolean isLogado = consulta.logarTotem(txtLogin.getText(), textSenha.getText());
         
-        if (txtLogin.getText().equalsIgnoreCase("Admin") && textSenha.getText().equals("1234")) {
+        if (isLogado) {
             dispose();
             CriacaoBanco banc = new CriacaoBanco();
             banc.criarBanco();

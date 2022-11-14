@@ -33,7 +33,9 @@ public class Connection {
         
         datasource.setUsername("root");
         
-        datasource.setPassword("urubu100");
+//        datasource.setPassword("aluno");
+        datasource.setPassword("urubu100");;
+
         
         this.connection = new JdbcTemplate(datasource);
     }
