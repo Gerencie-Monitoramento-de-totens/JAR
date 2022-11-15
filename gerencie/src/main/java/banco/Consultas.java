@@ -29,6 +29,18 @@ public class Consultas {
 
     }
     
+    public boolean desligarTotem(String id) {
+        try {
+            Map<String, Object> registro = con.queryForMap(
+                    "select * from totem where idTotem = ? and  isAtivoTotem= 'd';", id);
+
+            return registro.size() > 1;
+        } catch (EmptyResultDataAccessException e) {
+            return false;
+        }
+
+    }
+    
     public Map<String, Object> limitesTotem(String id) {
         try {
             Map<String, Object> registro = con.queryForMap(

@@ -4,6 +4,7 @@
  */
 package swing;
 
+import aplication.Inovacao;
 import com.github.britooo.looca.api.util.Conversor;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,6 +18,7 @@ import looca.LoocaInital;
 public class MostrarDado extends javax.swing.JFrame {
 
     LoocaInital lc = new LoocaInital();
+    Inovacao innovation = new Inovacao();
 
     /**
      * Creates new form MostrarDado
@@ -195,9 +197,9 @@ public class MostrarDado extends javax.swing.JFrame {
 
         lc.pegarDados();
 
-            new Timer().scheduleAtFixedRate(new TimerTask() {
+        new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
-            public void run(){
+            public void run() {
                 lc.loopPegarDados();
                 coletaCPU.setText(Conversor.formatarBytes(lc.getUsoCPU().longValue()));
                 usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
@@ -205,12 +207,11 @@ public class MostrarDado extends javax.swing.JFrame {
                 disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
                 coletaDisco.setText(Conversor.formatarBytes(lc.getUsoDoDisco()));
                 totalDisco.setText(Conversor.formatarBytes(lc.getMemoriaDiscoTotal()));
-            }
-        },0,1000);
-        
-     
-        
 
+//                innovation.desligar(lc.getIdTotem());
+                innovation.desligar("1");
+            }
+        }, 0, 1000);
 
 
     }//GEN-LAST:event_button01ActionPerformed

@@ -18,25 +18,15 @@ public class Insercao {
     public void inserirMetrica(Double usoCPU,Long usoDoDisco, Long emUsoRAM, Long disponivelRAM, String fkTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
-        con.update("INSERT INTO metrica (usoCPU,usoDoDisco, emUsoRAM, disponivelRAM, fkTotem) VALUES (?, ?, ?, ?, ?);",
-                 usoCPU,usoDoDisco, emUsoRAM, disponivelRAM, 1);
+        con.update("INSERT INTO metrica ( usoRAM, disponivelRAM, fkTotem) VALUES ( ?, ?, ?);",
+                  emUsoRAM, disponivelRAM, 1);
     }
 
     public void alterarTotem( Long memoriaRAMTotal, Long memoriaDiscoTotal, String IdTotem) {
-        // Ou passar diretamente dentro do método
-        // exemplo:
-        con.update("INSERT INTO empresa (idEmpresa) VALUES (?);",
-                1);
         
         
-        con.update("INSERT INTO fastFood (idFastFood,fkEmpresa) VALUES (?, ?);",
-                1,1);
-        
-        con.update("INSERT INTO totem (idTotem, fkFastFood) VALUES (?, ?);",
-                 1,1);
-        
-        con.update("UPDATE totem set memoriaDiscoTotal = ?, memoriaRAMTotal = ? WHERE idTotem = ?;"
-            ,  memoriaRAMTotal, memoriaDiscoTotal, 1);
+        con.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
+            ,  memoriaRAMTotal, 1);
     }
 
 }
