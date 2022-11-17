@@ -6,12 +6,15 @@ package swing;
 
 import aplication.Inovacao;
 import com.github.britooo.looca.api.util.Conversor;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import looca.LoocaInital;
 
-/**
+/** 
  *
  * @author Aegis
  */
@@ -200,7 +203,13 @@ public class MostrarDado extends javax.swing.JFrame {
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                lc.loopPegarDados();
+                try {
+                    lc.loopPegarDados();
+                } catch (IOException ex) {
+                    Logger.getLogger(MostrarDado.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(MostrarDado.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 coletaCPU.setText(Conversor.formatarBytes(lc.getUsoCPU().longValue()));
                 usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
                 totalRAM.setText(Conversor.formatarBytes(lc.getMemoriaRAMTotal()));
@@ -212,8 +221,6 @@ public class MostrarDado extends javax.swing.JFrame {
                 innovation.desligar("1");
             }
         }, 0, 1000);
-
-
     }//GEN-LAST:event_button01ActionPerformed
 
     /**

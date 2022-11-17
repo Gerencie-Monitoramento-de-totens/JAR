@@ -12,7 +12,9 @@ import com.github.britooo.looca.api.group.memoria.Memoria;
 import com.github.britooo.looca.api.group.processador.Processador;
 import com.github.britooo.looca.api.group.sistema.Sistema;
 import com.github.britooo.looca.api.group.temperatura.Temperatura;
+import java.io.IOException;
 import java.util.List;
+import slack.TesteSlack;
 
 /**
  *
@@ -69,6 +71,7 @@ public class LoocaInital {
     Temperatura loopTemperatura = looca.getTemperatura();
 
     Insercao insert = new Insercao();
+    TesteSlack mensagem = new TesteSlack();
 
     void dadosSistema() {
         sistema.getSistemaOperacional();
@@ -158,40 +161,30 @@ public class LoocaInital {
         insert.alterarTotem(memoriaRAMTotal, memoriaDiscoTotal, idTotem);
     }
 
-    public void loopPegarDados() {
+    public void loopPegarDados() throws IOException, InterruptedException {
         loopDadosSistema();
         loopDadosMemoria();
         loopDadosProcessador();
         loopDadosTemperatura();
 
         insert.inserirMetrica(usoCPU, usoDoDisco, emUsoRAM, disponivelRAM, idTotem);
-        
-        
+        mensagem.mensagemSlack(usoCPU,usoDoDisco,emUsoRAM,disponivelRAM,idTotem);
+
         //poderiamos criar dentro do slack select do banco, porem isso consumiria coisas desnecessarias
-        
         // ***
-        
         // tambem poderiamos chamar esses metodos de pegar dados no slack, podendo gerar conflitos por não pegar os mesmos dados, supercarregar a api ou inserir dois dados iguais no banco
-        
         //***
-        
         // como vamos fazer: 
-        
         //podemos chamar o slack aqui passando como argumento os mesmos dados que vamos inserir no banco
         // com isso garantimos que a cada chamada do slack as validações vão ser dos dados atuais
-        
-        
         // após isso criamos no slack uma função que valida dados por dados para saber se gera ou não o aviso
         // enviamos o aviso
-        
         // *** 
         // pontos a serem lembrados
-        
         //aonde vamos fazer o select da tabela totem para saber ou não se está em aviso será dentro do slack
         // é nos slack que vamos faer a alteração do campo do totem de aviso e a hora (ultimo aviso)
         // fazer validação para saber quando foi o ultimo aviso desse totem e gerar aviso novamente se nescessario
-        
-         //o metodo de preferencia tem q ser void
+        //o metodo de preferencia tem q ser void
         //não se esquecam de chamar dentro do metodo o select
         // criem um aviso pra cada limite
         //deixem somente uma classe parara conexao e uma para os avisos
