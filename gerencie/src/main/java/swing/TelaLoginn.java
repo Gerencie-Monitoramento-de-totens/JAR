@@ -6,6 +6,10 @@ package swing;
 
 import banco.Consultas;
 import banco.CriacaoBanco;
+import com.github.britooo.looca.api.core.Looca;
+import com.github.britooo.looca.api.group.processador.Processador;
+
+
 import javax.swing.JOptionPane;
 
 /**
@@ -16,11 +20,17 @@ public class TelaLoginn extends javax.swing.JFrame {
 
     Consultas consulta = new Consultas();
     
+    Looca looca = new Looca();
+    Processador processador = looca.getProcessador();
+    String idTotemVar;
+    
     /**
      * Creates new form TelaLoginn
      */
     public TelaLoginn() {
         initComponents();
+        idTotemVar = processador.getId();
+        idTotem.setText(idTotemVar);
     }
 
     /**
@@ -40,6 +50,7 @@ public class TelaLoginn extends javax.swing.JFrame {
         btnLogar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        idTotem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,6 +86,10 @@ public class TelaLoginn extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Logotipo Finanças e Banco Preto e Dourado Elegante (4) (1).png"))); // NOI18N
 
+        idTotem.setBackground(new java.awt.Color(0, 0, 0));
+        idTotem.setForeground(new java.awt.Color(255, 255, 255));
+        idTotem.setText("ID do totem");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -85,26 +100,30 @@ public class TelaLoginn extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton2))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(195, 195, 195)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1)
-                            .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                            .addComponent(textSenha)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(217, 217, 217)
+                                .addComponent(btnLogar))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(195, 195, 195)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel2)
+                                    .addComponent(jLabel1)
+                                    .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
+                                    .addComponent(textSenha)
+                                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(idTotem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 185, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(btnLogar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(87, 87, 87)
+                .addGap(28, 28, 28)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(idTotem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,12 +213,15 @@ public class TelaLoginn extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaLoginn().setVisible(true);
+                
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLogar;
+    private javax.swing.JLabel idTotem;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
