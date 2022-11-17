@@ -210,12 +210,10 @@ public class MostrarDado extends javax.swing.JFrame {
                 } catch (InterruptedException ex) {
                     Logger.getLogger(MostrarDado.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                coletaCPU.setText(Conversor.formatarBytes(lc.getUsoCPU().longValue()));
+                coletaCPU.setText(Conversor.formatarBytes(lc.getUsoProcessador().longValue()));
                 usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
                 totalRAM.setText(Conversor.formatarBytes(lc.getMemoriaRAMTotal()));
                 disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
-                coletaDisco.setText(Conversor.formatarBytes(lc.getUsoDoDisco()));
-                totalDisco.setText(Conversor.formatarBytes(lc.getMemoriaDiscoTotal()));
 
 //                innovation.desligar(lc.getIdTotem());
                 innovation.desligar("1");

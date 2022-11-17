@@ -22,13 +22,12 @@ import slack.TesteSlack;
  */
 public class LoocaInital {
 
-    Double usoCPU = 0.0;
+    Double usoProcessador = 0.0;
     Long emUsoRAM = 00000000000L;//
     Long disponivelRAM = 00000000000L;//
     String idTotem = "";//
-    Long usoDoDisco = 00000000000L;//
     Long memoriaRAMTotal = 0000000000L;//
-    Long memoriaDiscoTotal = 0000000000L;//
+    Double temperatura = 0.0;
 
     public Long getMemoriaRAMTotal() {
         return memoriaRAMTotal;
@@ -38,8 +37,8 @@ public class LoocaInital {
         return idTotem;
     }
 
-    public Double getUsoCPU() {
-        return usoCPU;
+    public Double getUsoProcessador() {
+        return usoProcessador;
     }
 
     public Long getEmUsoRAM() {
@@ -48,14 +47,6 @@ public class LoocaInital {
 
     public Long getDisponivelRAM() {
         return disponivelRAM;
-    }
-
-    public Long getUsoDoDisco() {
-        return usoDoDisco;
-    }
-
-    public Long getMemoriaDiscoTotal() {
-        return memoriaDiscoTotal;
     }
 
     // https://github.com/Britooo/looca-api/blob/main/README.md
@@ -120,45 +111,29 @@ public class LoocaInital {
 
     void loopDadosProcessador() {
 
-        usoCPU
-                = loopProcessador.getUso();
+        usoProcessador = loopProcessador.getUso();
 
         System.out.println(loopProcessador);
 
-        emUsoRAM = loopMemoria.getEmUso();
-        disponivelRAM = (loopMemoria.getDisponivel());
 
         System.out.println(loopMemoria);
     }
 
     //Temperatura
     void loopDadosTemperatura() {
-        loopTemperatura.getTemperatura();
+        temperatura = loopTemperatura.getTemperatura();
 
         System.out.println(loopTemperatura);
     }
 
-    //grupo de disco
-    void grupoDeDisco() {
-
-        DiscoGrupo grupoDeDiscos = looca.getGrupoDeDiscos();
-
-//Obtendo lista de discos a partir do getter
-        List<Disco> discos = grupoDeDiscos.getDiscos();
-
-        for (int i = 0; i < discos.size(); i++) {
-            memoriaDiscoTotal = (discos.get(i).getTamanho());
-            usoDoDisco = (discos.get(i).getLeituras());
-        }
-    }
+   
 
     public void pegarDados() {
         dadosSistema();
         dadosMemoria();
         dadosProcessador();
-        grupoDeDisco();
 
-        insert.alterarTotem(memoriaRAMTotal, memoriaDiscoTotal, idTotem);
+        insert.alterarTotem(memoriaRAMTotal, idTotem);
     }
 
     public void loopPegarDados() throws IOException, InterruptedException {
@@ -167,8 +142,8 @@ public class LoocaInital {
         loopDadosProcessador();
         loopDadosTemperatura();
 
-        insert.inserirMetrica(usoCPU, usoDoDisco, emUsoRAM, disponivelRAM, idTotem);
-        mensagem.mensagemSlack(usoCPU,usoDoDisco,emUsoRAM,disponivelRAM,idTotem);
+        insert.inserirMetrica( emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
+        mensagem.mensagemSlack(usoProcessador,emUsoRAM,disponivelRAM,idTotem);
 
         //poderiamos criar dentro do slack select do banco, porem isso consumiria coisas desnecessarias
         // ***

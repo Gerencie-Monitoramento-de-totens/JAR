@@ -24,7 +24,7 @@ public class TesteSlack {
      * @throws IOException
      * @throws InterruptedException
      */
-    public void mensagemSlack(Double usoCPU, Long usoDoDisco, Long emUsoRAM, Long disponivelRAM, String fkTotem) throws IOException, InterruptedException {
+    public void mensagemSlack(Double usoCPU, Long emUsoRAM, Long disponivelRAM, String fkTotem) throws IOException, InterruptedException {
 
         if (usoCPU > 20.0) {
 
