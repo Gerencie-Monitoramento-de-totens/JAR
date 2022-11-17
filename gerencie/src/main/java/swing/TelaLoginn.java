@@ -45,12 +45,12 @@ public class TelaLoginn extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtLogin = new javax.swing.JTextField();
-        textSenha = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnLogar = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         idTotem = new javax.swing.JLabel();
+        textSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,12 +63,6 @@ public class TelaLoginn extends javax.swing.JFrame {
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoginActionPerformed(evt);
-            }
-        });
-
-        textSenha.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textSenhaActionPerformed(evt);
             }
         });
 
@@ -90,6 +84,12 @@ public class TelaLoginn extends javax.swing.JFrame {
         idTotem.setForeground(new java.awt.Color(255, 255, 255));
         idTotem.setText("ID do totem");
 
+        textSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSenhaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -110,9 +110,11 @@ public class TelaLoginn extends javax.swing.JFrame {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1)
                                     .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 112, Short.MAX_VALUE)
-                                    .addComponent(textSenha)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(idTotem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addComponent(idTotem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 185, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -129,9 +131,9 @@ public class TelaLoginn extends javax.swing.JFrame {
                 .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(btnLogar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 123, Short.MAX_VALUE)
                 .addComponent(jButton2)
@@ -158,14 +160,10 @@ public class TelaLoginn extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
 
-    private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_textSenhaActionPerformed
-
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
         Consultas consulta = new Consultas();
-        boolean isLogado = consulta.logarTotem(txtLogin.getText(), textSenha.getText());
+        boolean isLogado = consulta.logarTotem(txtLogin.getText(), textSenha.getText(), idTotemVar);
         
         if (isLogado) {
             dispose();
@@ -181,6 +179,10 @@ public class TelaLoginn extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_btnLogarActionPerformed
+
+    private void textSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -227,7 +229,7 @@ public class TelaLoginn extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField textSenha;
+    private javax.swing.JPasswordField textSenha;
     private javax.swing.JTextField txtLogin;
     // End of variables declaration//GEN-END:variables
 }

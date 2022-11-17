@@ -46,7 +46,7 @@ public class CriacaoBanco {
         );
 
         con.execute(
-                "create table if not exists  fastFood("
+                "create table if not exists fastfood("
                 + "idFastFood int primary key auto_increment,"
                 + "nomeFastFood varchar(35),"
                 + "CEP char(9),"
@@ -60,7 +60,7 @@ public class CriacaoBanco {
 
         con.execute(
                 "create table if not exists  totem("
-                + "idTotem int primary key auto_increment,"
+                + "idTotem varchar(20) primary key,"
                 + "usuarioTotem varchar(40),"
                 + "senhaTotem varchar(20),"
                 + "sistemaOperacional varchar(45),"
@@ -94,7 +94,7 @@ public class CriacaoBanco {
                 + "usoProcessador int,"
                 + "disponivelProcessador int,"
                 + "temperatura int,"
-                + "fkTotem INT,"
+                + "fkTotem varchar(20),"
                 + "FOREIGN KEY (fkTotem) REFERENCES totem(idTotem)"
                 + ");"
         );

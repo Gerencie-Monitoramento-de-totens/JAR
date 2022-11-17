@@ -17,10 +17,10 @@ public class Consultas {
     Connection connection = new Connection();
     JdbcTemplate con = connection.getConnection();
 
-    public boolean logarTotem(String usuario, String senha) {
+    public boolean logarTotem(String usuario, String senha, String idTotem) {
         try {
             Map<String, Object> registro = con.queryForMap(
-                    "select * from totem where usuarioTotem = ? and senhaTotem = ?;", usuario, senha);
+                    "select * from totem where usuarioTotem = ? and senhaTotem = ? and idTotem = ?;", usuario, senha, idTotem);
 
             return registro.size() > 1;
         } catch (EmptyResultDataAccessException e) {
