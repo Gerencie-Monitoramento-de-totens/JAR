@@ -17,6 +17,7 @@ public class TesteSlack {
 
     JSONObject json = new JSONObject();
     Insercao dados = new Insercao();
+    Log logs = new Log();
 
     /**
      *
@@ -31,6 +32,7 @@ public class TesteSlack {
             json.put("text", "Seu uso de CPU ultrapassou o limite!");
 
             Slack.sendMessage(json);
+            logs.logCPU(logs.getLista());
         }
 
         json.put("text", "Tudo está indo bem");
