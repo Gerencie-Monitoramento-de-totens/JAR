@@ -14,12 +14,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
  */
 public class Consultas {
 
-    Connection connection = new Connection();
-    JdbcTemplate con = connection.getConnection();
+    ConnectionAzu connectionAzu = new ConnectionAzu();
+    JdbcTemplate conAzu = connectionAzu.getConnection();
 
     public boolean logarTotem(String usuario, String senha, String idTotem) {
         try {
-            Map<String, Object> registro = con.queryForMap(
+            Map<String, Object> registro = conAzu.queryForMap(
                     "select * from totem where usuarioTotem = ? and senhaTotem = ? and idTotem = ?;", usuario, senha, idTotem);
 
             return registro.size() > 1;
@@ -31,7 +31,7 @@ public class Consultas {
     
     public boolean desligarTotem(String id) {
         try {
-            Map<String, Object> registro = con.queryForMap(
+            Map<String, Object> registro = conAzu.queryForMap(
                     "select * from totem where idTotem = ? and  isAtivoTotem= 'd';", id);
 
             return registro.size() > 1;
@@ -43,7 +43,7 @@ public class Consultas {
     
     public Map<String, Object> limitesTotem(String id) {
         try {
-            Map<String, Object> registro = con.queryForMap(
+            Map<String, Object> registro = conAzu.queryForMap(
                     "select limiteProcessador, limiteTemperatura,limiteRam from totem where idTotem = ?", id);
 
             return registro;

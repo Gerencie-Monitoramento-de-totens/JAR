@@ -15,12 +15,18 @@ public class Insercao {
     Connection connection = new Connection();
     JdbcTemplate con = connection.getConnection();
     
+    ConnectionAzu connectionAzu = new ConnectionAzu();
+    JdbcTemplate conAzu = connectionAzu.getConnection();
+    
    
     
     public void inserirMetrica( Long emUsoRAM, Long disponivelRAM, Double usoProcessador,Double temperatura, String idTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
         con.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura, fkTotem) VALUES ( NOW(), ?, ?, ?,?,?);",
+                  emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
+        
+        conAzu.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura, fkTotem) VALUES ( NOW(), ?, ?, ?,?,?);",
                   emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
     }
 
@@ -30,12 +36,18 @@ public class Insercao {
         
         con.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
             ,  memoriaRAMTotal, IdTotem);
+        
+        conAzu.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
+            ,  memoriaRAMTotal, IdTotem);
     }
     
     public void reiniciarTotem( String IdTotem) {
         
         
         con.update("UPDATE totem set isAtivoTotem = 't' WHERE idTotem = ?;"
+            ,  IdTotem);
+        
+        conAzu.update("UPDATE totem set isAtivoTotem = 't' WHERE idTotem = ?;"
             ,  IdTotem);
     }
 
