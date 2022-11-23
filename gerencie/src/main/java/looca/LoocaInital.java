@@ -141,8 +141,11 @@ public class LoocaInital {
         loopDadosMemoria();
         loopDadosProcessador();
         loopDadosTemperatura();
+        
+        Long utilizadoRAM = emUsoRAM / 1000000000;
+        Long ramDisponivel = disponivelRAM / 1000000000;
 
-        insert.inserirMetrica( emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
+        insert.inserirMetrica( utilizadoRAM, ramDisponivel, usoProcessador, temperatura, idTotem);
         mensagem.mensagemSlack(usoProcessador,emUsoRAM,disponivelRAM,idTotem);
 
         //poderiamos criar dentro do slack select do banco, porem isso consumiria coisas desnecessarias

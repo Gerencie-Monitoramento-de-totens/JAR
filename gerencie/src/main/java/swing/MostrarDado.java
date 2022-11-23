@@ -203,6 +203,9 @@ public class MostrarDado extends javax.swing.JFrame {
         new Timer().scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
+                
+             
+                
                 try {
                     lc.loopPegarDados();
                 } catch (IOException ex) {
