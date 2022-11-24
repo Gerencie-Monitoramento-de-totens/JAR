@@ -15,6 +15,7 @@ swing\TelaLoginn.class
 slack\Slack.class
 looca\LoocaInital.class
 banco\Connection.class
+banco\ConnectionAzu.class
 swing\TelaLoginn$4.class
 aplication\App.class
 banco\CriacaoBanco.class

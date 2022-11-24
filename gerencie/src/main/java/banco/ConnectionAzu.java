@@ -19,14 +19,15 @@ public class ConnectionAzu {
     public ConnectionAzu() {
         BasicDataSource datasource = new BasicDataSource();
         
-        datasource.setDriverClassName("datasource.setDriverClassName(\");\n");
+        datasource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
         
-        datasource.setUrl("jdbc:sqlserver://svr-gerencie.database.windows.net:1433;database=gerencie;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;");
+        datasource.setUrl("jdbc:sqlserver://svr-gerencie.database.windows.net:1433;database=gerencie;encryp\\n\" +\n" +
+"\"t=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net");
         
         datasource.setUsername("admin-gerencie");
         
         datasource.setPassword("#Gfrupo10");
-//        datasource.setPassword("urubu100");
+//      datasource.setPassword("urubu100");
 
         
         this.connection = new JdbcTemplate(datasource);
