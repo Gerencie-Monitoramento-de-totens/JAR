@@ -23,19 +23,15 @@ public class Insercao {
     public void inserirMetrica( Long emUsoRAM, Long disponivelRAM, Double usoProcessador,Double temperatura, String idTotem) {
         // Ou passar diretamente dentro do método
         // exemplo:
-        con.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura, fkTotem) VALUES ( NOW(), ?, ?, ?,?,?);",
-                  emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
+        con.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura) VALUES ( NOW(), ?, ?, ?,?);",
+                  emUsoRAM, disponivelRAM, usoProcessador, temperatura);
         
-        conAzu.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura, fkTotem) VALUES ( NOW(), ?, ?, ?,?,?);",
+        conAzu.update("INSERT INTO metrica ( dtInicializado, usoRAM, disponivelRAM,usoProcessador, temperatura, fkTotem) VALUES ( CURRENT_TIMESTAMP, ?, ?, ?,?,?);",
                   emUsoRAM, disponivelRAM, usoProcessador, temperatura, idTotem);
     }
 
 
     public void alterarTotem( Long memoriaRAMTotal, String IdTotem) {
-        
-        
-        con.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
-            ,  memoriaRAMTotal, IdTotem);
         
         conAzu.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
             ,  memoriaRAMTotal, IdTotem);
@@ -43,9 +39,7 @@ public class Insercao {
     
     public void reiniciarTotem( String IdTotem) {
         
-        
-        con.update("UPDATE totem set isAtivoTotem = 't' WHERE idTotem = ?;"
-            ,  IdTotem);
+     
         
         conAzu.update("UPDATE totem set isAtivoTotem = 't' WHERE idTotem = ?;"
             ,  IdTotem);

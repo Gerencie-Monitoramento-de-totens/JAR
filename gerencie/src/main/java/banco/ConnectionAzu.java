@@ -18,19 +18,15 @@ public class ConnectionAzu {
     // Obs. O código comentado é um exemplo de como se conectar ao mysql
     public ConnectionAzu() {
         BasicDataSource datasource = new BasicDataSource();
-        
-        datasource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        
-        datasource.setUrl("jdbc:sqlserver://svr-gerencie.database.windows.net:1433;database=gerencie;encryp\\n\" +\n" +
-"\"t=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net");
-        
-        datasource.setUsername("admin-gerencie");
-        
-        datasource.setPassword("#Gfrupo10");
-//      datasource.setPassword("urubu100");
 
-        
-        this.connection = new JdbcTemplate(datasource);
+        datasource.setDriverClassName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        datasource.setUrl("jdbc:sqlserver://svr-gerencie.database.windows.net:1433;database=gerencie;encryp\n" +
+"t=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;");
+        datasource.setUsername("admin-gerencie");
+        datasource.setPassword("#Gfgrupo10");
+
+
+        connection = new JdbcTemplate(datasource);
     }
 
     public JdbcTemplate getConnection() {
