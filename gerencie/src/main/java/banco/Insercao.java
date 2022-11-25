@@ -31,10 +31,10 @@ public class Insercao {
     }
 
 
-    public void alterarTotem( Long memoriaRAMTotal, String IdTotem) {
+    public void alterarTotem( String so,Long memoriaRAMTotal, String IdTotem) {
         
-        conAzu.update("UPDATE totem set memoriaRAMTotal = ? WHERE idTotem = ?;"
-            ,  memoriaRAMTotal, IdTotem);
+        conAzu.update("UPDATE totem set sistemaOperacional = ?, memoriaRAMTotal = ? WHERE idTotem = ?;"
+            , so, memoriaRAMTotal, IdTotem);
     }
     
     public void reiniciarTotem( String IdTotem) {

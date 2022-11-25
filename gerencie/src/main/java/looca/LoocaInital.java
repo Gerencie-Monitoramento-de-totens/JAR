@@ -28,6 +28,7 @@ public class LoocaInital {
     String idTotem = "";//
     Long memoriaRAMTotal = 0000000000L;//
     Double temperatura = 0.0;
+    String sistemaOperacional = "";
 
     public Long getMemoriaRAMTotal() {
         return memoriaRAMTotal;
@@ -49,6 +50,10 @@ public class LoocaInital {
         return disponivelRAM;
     }
 
+    public String getSistemaOperacional() {
+        return sistemaOperacional;
+    }
+    
     // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();
 
@@ -65,11 +70,11 @@ public class LoocaInital {
     TesteSlack mensagem = new TesteSlack();
 
     void dadosSistema() {
-        sistema.getSistemaOperacional();
+        sistemaOperacional = sistema.getSistemaOperacional();
         //sistema.getFabricante();
         //sistema.getArquitetura();
         //sistema.getPermissao();
-
+        
         System.out.println(sistema);
     }
 
@@ -133,7 +138,7 @@ public class LoocaInital {
         dadosMemoria();
         dadosProcessador();
 
-        insert.alterarTotem(memoriaRAMTotal, idTotem);
+        insert.alterarTotem(sistemaOperacional ,memoriaRAMTotal, idTotem);
     }
 
     public void loopPegarDados() throws IOException, InterruptedException {

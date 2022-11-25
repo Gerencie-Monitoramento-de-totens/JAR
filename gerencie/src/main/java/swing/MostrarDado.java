@@ -218,7 +218,7 @@ public class MostrarDado extends javax.swing.JFrame {
                 totalRAM.setText(Conversor.formatarBytes(lc.getMemoriaRAMTotal()));
                 disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
 
-                innovation.desligar(lc.getIdTotem());
+                innovation.desligar(lc.getIdTotem(), lc.getSistemaOperacional());
                 //innovation.desligar("1");
             }
         }, 0, 1000);

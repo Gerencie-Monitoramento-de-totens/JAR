@@ -17,19 +17,26 @@ public class Inovacao {
     Consultas cs = new Consultas();
     Insercao ins = new Insercao();
 
-    public void desligar(String id) {
+    public void desligar(String id, String so) {
         boolean isDesligar = cs.desligarTotem(id);
 
         if (isDesligar) {
             String[] cmds = {
                 "cmd /c start cmd.exe",
                 "shutdown /r"
+//                "shutdown now"
+
             };
             
             ins.reiniciarTotem(id);
 
             try {
-                pro = run.exec(String.join("& ", cmds));
+                if(so.equals("Windows")){
+                    pro = run.exec(String.join("& ", cmds));
+                }else{
+                    pro = run.exec("shutdown -h -t " + 1); 
+                }
+               
 
                 read = new BufferedReader(new InputStreamReader(pro.getInputStream()));
                 read.readLine();
