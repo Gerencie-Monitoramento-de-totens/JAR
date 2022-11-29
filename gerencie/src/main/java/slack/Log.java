@@ -60,5 +60,29 @@ public class Log {
         }
     }
 
-    // public void  {
+     public void logRAM(List<String> lista) {
+
+        Date dataHoraAtual = new Date();
+        String hora = new SimpleDateFormat("HH:mm:ss").format(dataHoraAtual);
+
+        if (!arquivo.exists()) {
+            try {
+                arquivo.createNewFile();
+            } catch (IOException ex) {
+                Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        lista.add("Você excedeu o limite de RAM " + LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL))
+                + " às " + (DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalDateTime.now())));
+        
+
+        try {
+            // + " às " + dataHoraAtual);
+            Files.write(Paths.get(arquivo.getPath()), lista, StandardOpenOption.APPEND);
+        } catch (IOException ex) {
+            Logger.getLogger(Log.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

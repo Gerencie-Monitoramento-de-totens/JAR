@@ -2,10 +2,16 @@ package slack;
 
 import banco.Consultas;
 import banco.Insercao;
+import com.github.britooo.looca.api.util.Conversor;
 import java.io.IOException;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import org.json.JSONObject;
 
 
@@ -19,46 +25,72 @@ import org.json.JSONObject;
  */
 public class TesteSlack {
 
+    Timer timer = new Timer();
     JSONObject json = new JSONObject();
     Insercao dados = new Insercao();
     Log logs = new Log();
     Consultas consulta = new Consultas();
 
-    
     public void mensagemSlack(Double usoCPU, Long emUsoRAM, Long disponivelRAM, String fkTotem) throws IOException, InterruptedException {
         Map<String, Object> limites = consulta.limitesTotem(fkTotem);
 
         Double limiteP = new Double(limites.get("limiteProcessador").toString());
-        Double limiteT = new Double(limites.get("limiteTemperatura").toString());
+
         Double limiteR = new Double(limites.get("limiteRam").toString());
         LocalDateTime ultimoAlerta = LocalDateTime.now();
         LocalDateTime proximoAlerta = ultimoAlerta.plusMinutes(2);
-        
-        
-        if (Duration.between(ultimoAlerta, proximoAlerta).toMinutes() <= 0) {
 
-            if (usoCPU > limiteP) {
+        int delay = 5000;   // tempo de espera antes da 1ª execução da tarefa.
+        int interval = 10000;  // intervalo no qual a tarefa será executada.
+        Timer timer = new Timer();
+        timer.scheduleAtFixedRate(new TimerTask() {
+            public void run() {
 
-                json.put("text", "Seu uso de CPU ultrapassou o limite!");
+                if (usoCPU > limiteP) {
 
-                Slack.sendMessage(json);
-                logs.logCPU(logs.getLista());
-                dados.novoAlerta(fkTotem);
-                ultimoAlerta = LocalDateTime.now();
+                    json.put("text", "Seu uso de CPU ultrapassou o limite!");
+
+                    try {
+                        Slack.sendMessage(json);
+                    } catch (IOException ex) {
+                        Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    logs.logCPU(logs.getLista());
+                    //  dados.novoAlerta(fkTotem);
+                    //  ultimoAlerta = LocalDateTime.now();
+                }
+                if (emUsoRAM > limiteR) {
+
+                    json.put("text", "Seu uso de RAM ultrapassou o limite!");
+
+                    try {
+                        Slack.sendMessage(json);
+                    } catch (IOException ex) {
+                        Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    logs.logRAM(logs.getLista());
+                    // dados.novoAlerta(fkTotem);
+                    //  ultimoAlerta = LocalDateTime.now();
+                }
+                //   }
+
+                json.put("text", "Tudo está indo bem");
+
+                try {
+                    Slack.sendMessage(json);
+                } catch (IOException ex) {
+                    Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(TesteSlack.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
-            if (emUsoRAM > limiteR) {
+        }, delay, interval);
 
-                json.put("text", "Seu uso de RAM ultrapassou o limite!");
-
-                Slack.sendMessage(json);
-                logs.logCPU(logs.getLista());
-                dados.novoAlerta(fkTotem);
-                ultimoAlerta = LocalDateTime.now();
-            }
-        }
-
-        json.put("text", "Tudo está indo bem");
-
-        Slack.sendMessage(json);
+        //if (Duration.between(ultimoAlerta, proximoAlerta).toMinutes() <= 0) {
     }
 }
