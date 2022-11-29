@@ -8,7 +8,7 @@ import banco.Consultas;
 import banco.CriacaoBanco;
 import com.github.britooo.looca.api.core.Looca;
 import com.github.britooo.looca.api.group.processador.Processador;
-
+import java.util.Map;
 
 import javax.swing.JOptionPane;
 
@@ -19,18 +19,19 @@ import javax.swing.JOptionPane;
 public class TelaLoginn extends javax.swing.JFrame {
 
     Consultas consulta = new Consultas();
-    
     Looca looca = new Looca();
     Processador processador = looca.getProcessador();
     String idTotemVar;
-    
+
     /**
      * Creates new form TelaLoginn
      */
     public TelaLoginn() {
         initComponents();
+
         idTotemVar = processador.getId();
         idTotem.setText(idTotemVar);
+       
     }
 
     /**
@@ -156,6 +157,7 @@ public class TelaLoginn extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void txtLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLoginActionPerformed
@@ -164,7 +166,7 @@ public class TelaLoginn extends javax.swing.JFrame {
         // TODO add your handling code here:
         Consultas consulta = new Consultas();
         boolean isLogado = consulta.logarTotem(txtLogin.getText(), textSenha.getText(), idTotemVar);
-        
+
         if (isLogado) {
             dispose();
             CriacaoBanco banc = new CriacaoBanco();
@@ -215,8 +217,7 @@ public class TelaLoginn extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new TelaLoginn().setVisible(true);
-                
-                
+
             }
         });
     }

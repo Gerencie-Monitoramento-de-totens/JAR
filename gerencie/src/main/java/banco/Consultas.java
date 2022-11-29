@@ -44,7 +44,7 @@ public class Consultas {
     public Map<String, Object> limitesTotem(String id) {
         try {
             Map<String, Object> registro = conAzu.queryForMap(
-                    "select limiteProcessador, limiteTemperatura,limiteRam from totem where idTotem = ?", id);
+                    "select limiteProcessador, limiteTemperatura, limiteRam from totem where idTotem = ?", id);
 
             return registro;
         } catch (EmptyResultDataAccessException e) {

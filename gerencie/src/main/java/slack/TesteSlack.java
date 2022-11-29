@@ -1,7 +1,9 @@
 package slack;
 
+import banco.Consultas;
 import banco.Insercao;
 import java.io.IOException;
+import java.util.Map;
 import org.json.JSONObject;
 
 
@@ -18,6 +20,7 @@ public class TesteSlack {
     JSONObject json = new JSONObject();
     Insercao dados = new Insercao();
     Log logs = new Log();
+    Consultas consulta = new Consultas();
 
     /**
      *
@@ -26,10 +29,26 @@ public class TesteSlack {
      * @throws InterruptedException
      */
     public void mensagemSlack(Double usoCPU, Long emUsoRAM, Long disponivelRAM, String fkTotem) throws IOException, InterruptedException {
+        Map<String, Object> limites = consulta.limitesTotem(fkTotem);
 
-        if (usoCPU > 20.0) {
+        Double limiteP = new Double(limites.get("limiteProcessador").toString());
+        Double limiteT = new Double(limites.get("limiteTemperatura").toString());
+        Double limiteR = new Double(limites.get("limiteRam").toString());
+
+        System.out.println(limites.get("limiteProcessador"));
+        System.out.println(limites.get("limiteTemperatura"));
+        System.out.println(limites.get("limiteRam"));
+
+        if (usoCPU > limiteP) {
 
             json.put("text", "Seu uso de CPU ultrapassou o limite!");
+
+            Slack.sendMessage(json);
+            logs.logCPU(logs.getLista());
+        }
+        if (emUsoRAM > limiteR) {
+
+            json.put("text", "Seu uso de RAM ultrapassou o limite!");
 
             Slack.sendMessage(json);
             logs.logCPU(logs.getLista());
