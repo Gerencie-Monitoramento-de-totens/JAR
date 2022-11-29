@@ -53,6 +53,12 @@ public class LoocaInital {
     public String getSistemaOperacional() {
         return sistemaOperacional;
     }
+
+    public Double getTemperatura() {
+        return temperatura;
+    }
+    
+    
     
     // https://github.com/Britooo/looca-api/blob/main/README.md
     Looca looca = new Looca();

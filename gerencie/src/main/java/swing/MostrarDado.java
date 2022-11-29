@@ -44,26 +44,22 @@ public class MostrarDado extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        coletaDisco = new javax.swing.JLabel();
         usoRAM = new javax.swing.JLabel();
         disponivelRAM = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         totalRAM = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        totalDisco = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         coletaCPU = new javax.swing.JLabel();
         button01 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        temperatura = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
-
-        coletaDisco.setText("#####");
 
         usoRAM.setText("#####");
 
@@ -79,11 +75,6 @@ public class MostrarDado extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(216, 174, 83));
         jLabel2.setText("CPU");
 
-        totalDisco.setText("#####");
-
-        jLabel3.setForeground(new java.awt.Color(216, 174, 83));
-        jLabel3.setText("DISCO EM USO");
-
         jLabel4.setForeground(new java.awt.Color(216, 174, 83));
         jLabel4.setText("RAM EM USO");
 
@@ -93,9 +84,6 @@ public class MostrarDado extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(216, 174, 83));
         jLabel6.setText("RAM TOTAL");
 
-        jLabel7.setForeground(new java.awt.Color(216, 174, 83));
-        jLabel7.setText("DISCO TOTAL");
-
         coletaCPU.setText("#####");
 
         button01.setText("Start");
@@ -104,6 +92,11 @@ public class MostrarDado extends javax.swing.JFrame {
                 button01ActionPerformed(evt);
             }
         });
+
+        jLabel8.setForeground(new java.awt.Color(216, 174, 83));
+        jLabel8.setText("TEMPERATURA");
+
+        temperatura.setText("#####");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -115,31 +108,27 @@ public class MostrarDado extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jLabel8)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(temperatura))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel6)
                                     .addGap(235, 235, 235)
                                     .addComponent(totalRAM))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel2)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(coletaCPU))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(coletaDisco))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel4)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(usoRAM))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(disponivelRAM))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(totalDisco))))
+                                    .addComponent(disponivelRAM))))
                         .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(button01)
@@ -156,10 +145,10 @@ public class MostrarDado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(coletaCPU))
-                .addGap(18, 18, 18)
+                .addGap(17, 17, 17)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(coletaDisco))
+                    .addComponent(jLabel6)
+                    .addComponent(totalRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -168,15 +157,11 @@ public class MostrarDado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(disponivelRAM))
-                .addGap(56, 56, 56)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(totalRAM, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(totalDisco)
-                    .addComponent(jLabel7))
-                .addContainerGap(34, Short.MAX_VALUE))
+                    .addComponent(jLabel8)
+                    .addComponent(temperatura))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,6 +202,7 @@ public class MostrarDado extends javax.swing.JFrame {
                 usoRAM.setText(Conversor.formatarBytes(lc.getEmUsoRAM()));
                 totalRAM.setText(Conversor.formatarBytes(lc.getMemoriaRAMTotal()));
                 disponivelRAM.setText(Conversor.formatarBytes(lc.getDisponivelRAM()));
+                temperatura.setText(Double.toString(lc.getTemperatura()));
 
                 innovation.desligar(lc.getIdTotem(), lc.getSistemaOperacional());
                 //innovation.desligar("1");
@@ -263,17 +249,15 @@ public class MostrarDado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton button01;
     private javax.swing.JLabel coletaCPU;
-    private javax.swing.JLabel coletaDisco;
     private javax.swing.JLabel disponivelRAM;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel totalDisco;
+    private javax.swing.JLabel temperatura;
     private javax.swing.JLabel totalRAM;
     private javax.swing.JLabel usoRAM;
     // End of variables declaration//GEN-END:variables

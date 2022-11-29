@@ -44,5 +44,11 @@ public class Insercao {
         conAzu.update("UPDATE totem set isAtivoTotem = 't' WHERE idTotem = ?;"
             ,  IdTotem);
     }
+    
+    public void novoAlerta( String IdTotem) {
+   
+        conAzu.update("UPDATE totem set ultimoAlerta = CURRENT_TIMESTAMP WHERE idTotem = ?;"
+            ,  IdTotem);
+    }
 
 }
